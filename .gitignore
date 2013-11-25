@@ -12,7 +12,7 @@ application/logs/
 application/models/
 application/views/
 
-index.php
+/index.php
 
 system/
 
