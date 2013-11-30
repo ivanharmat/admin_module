@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo isset($title) ? $title : 'Admin';?></title>
+    <title><?php echo isset($title) ? $title.' - ' : '';?><?php echo APP_NAME;?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="/skin/admin/css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +15,8 @@
     <!-- Custom styles for this template -->
     <link href="/skin/admin/css/font-awesome.min.css" rel="stylesheet">
     <link href="/skin/admin/css/custom.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/skin/admin/img/favicon.ico">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -25,4 +26,5 @@
   </head>
 
   <body>
+    <div class="container" id="main_container">
 
