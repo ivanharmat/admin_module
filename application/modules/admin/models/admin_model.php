@@ -32,6 +32,22 @@ class Admin_model extends CI_model
     }
 
 	/**
+	* method load_common_data
+	* loads data used throughout the module
+	* @return array
+	*/
+	public function load_common_data()
+	{
+		$data = array();
+		$admin_id = $this->session->userdata('admin_id');
+		$admin_user = $this->db->select(array('admin_first_name'))
+						   ->get_where('admin_users', array('admin_user_id' => $admin_id))
+						   ->row_array();
+		$data['first_name'] = $admin_user['admin_first_name'];
+		return $data;
+	}
+
+	/**
 	* method admin_logged_in_login_form
 	* check if the admin user is logged in, 
 	* redirects back to dashboard page, if user tries to access login page

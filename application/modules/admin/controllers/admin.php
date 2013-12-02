@@ -33,6 +33,11 @@ class Admin extends CI_Controller
         $this->load->model('admin_model');
     }
     
+    /**
+	* method index
+	* loads login page
+	* @return void
+	*/
 	public function index()
 	{
 		$this->admin_model->admin_logged_in_login_form();
@@ -78,41 +83,62 @@ class Admin extends CI_Controller
 		redirect(base_url('admin'));
     }
 
-
+    /**
+	* method dashboard
+	* loads dashboard page
+	* @return void
+	*/
 	public function dashboard()
 	{
 		$this->admin_model->admin_logged_in();
 
 		$data = array(
 			'title' => 'Dashboard',
-			'content' => 'dashboard'
+			'content' => 'dashboard',
+			'common' => $this->admin_model->load_common_data(),
+			'active' => ''
 		);
 
 		$this->load->view('common/admin_template', $data);
 	}
 
-	// public function admin_from_md5()
-	// {
-	// 	$admins = $this->db->get('admin_users')->result_array();
-	// 	foreach($admins as $admin)
-	// 	{
-	// 		$encrypted_md5 = $this->encrypt->encode($admin['admin_md5']);
-	// 		$this->db->where('admin_user_id', $admin['admin_user_id'])->update('admin_users', array('admin_password' => $encrypted_md5));
-	// 	}
-	// }
-	
-	// public function user_from_md5()
-	// {
-	// 	$users = $this->db->get('regular_users')->result_array();
-	// 	foreach($users as $user)
-	// 	{
-	// 		if(!$user['facebook'])
-	// 		{
-	// 			$encrypted_md5 = $this->encrypt->encode($user['regular_user_md5']);
-	// 			$this->db->where('regular_user_id', $user['regular_user_id'])->update('regular_users', array('regular_user_password' => $encrypted_md5));
-	// 		}
-	// 	}
-	// }
+	/**
+	* method pages
+	* loads pages page
+	* @return void
+	*/
+	public function pages()
+	{
+		$this->admin_model->admin_logged_in();
+
+		$data = array(
+			'title' => 'Pages',
+			'content' => 'pages',
+			'common' => $this->admin_model->load_common_data(),
+			'active' => 'pages'
+		);
+
+		$this->load->view('common/admin_template', $data);
+	}
+
+	/**
+	* method settings
+	* loads settings page
+	* @return void
+	*/
+	public function settings()
+	{
+		$this->admin_model->admin_logged_in();
+
+		$data = array(
+			'title' => 'Settings',
+			'content' => 'settings',
+			'common' => $this->admin_model->load_common_data(),
+			'active' => ''
+		);
+
+		$this->load->view('common/admin_template', $data);
+	}
 
 
 
